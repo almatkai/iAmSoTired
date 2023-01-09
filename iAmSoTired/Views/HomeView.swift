@@ -28,26 +28,22 @@ struct HomeView: View {
                     .animation(.easeOut)
                     .transition(.slide)
                 Spacer()
-                
+                ZStack{
+                    HStack{
+                        Spacer()
+                        NavigationLink{
+                            EmptyView(user: user, tasks: $tasks)
+                        }label:{
+                            Image("addNew")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60)
+                        }
+                    }
+                }.padding()
             
             }.padding()
                 .navigationBarItems(leading: self.leadingBarButton)
-            ZStack{
-                HStack{
-                    Spacer()
-                    NavigationLink{
-                        EmptyView(user: user, tasks: $tasks)
-                    }label:{
-                        Image("addNew")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60)
-//                        Text("New note")
-//                            .foregroundColor(Color(hex: "e6c244"))
-                    }
-                }
-                .padding()
-            }
         }
         
      }
